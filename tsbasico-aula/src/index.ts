@@ -1,6 +1,6 @@
 export class OlaMundo {
     public run(){
-        console.log('Dale Stage!');
+        console.log('Dale Stage!!');
     }
 }
 
