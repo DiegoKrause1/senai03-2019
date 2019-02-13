@@ -54,6 +54,7 @@ export class Perguntas {
                 }
         );
     }
+
     public entrega(){
         prompt(
             [
@@ -84,14 +85,37 @@ export class Perguntas {
                 }
             ]
         ).then(
-            
+            (answers : any) => {
+                this.dadosDaEntrega = answers;
+                this.relatorio();
+            }
         );
     }
 
     public relatorio(){
-        console.log('uhul');
-        (answers : any) => {
-            console.log(`\nOlá ${answers.nome}!\n`);
+        console.log('---------------------------------');
+        console.log(' Relatório do Pedido:\n');
+        console.log(` Nome: ${this.dadosPedido.name}`);
+        console.log(` Telefone: ${this.dadosPedido.tel}`);
+        console.log(` Tamanho: ${this.dadosPedido.tam}`);
+        console.log(` Sabor: ${this.dadosPedido.sabor}`);
+        console.log(` Quantidade: ${this.dadosPedido.quantidade}`);
+
+        if (this.dadosDaEntrega === null) {
+            console.log('---------------------------------');
+            console.log(' O cliente irá buscar a pizza');
+            console.log(' Obrigado pela preferência');
+            console.log('---------------------------------');
+        }else {
+            console.log('---------------------------------');
+            console.log(' Relarório da Entrega\n');
+            console.log(` Cidade: ${this.dadosDaEntrega.cidade}`);
+            console.log(` Bairro: ${this.dadosDaEntrega.bairro}`);
+            console.log(` Rua: ${this.dadosDaEntrega.rua}`);
+            console.log(` Número: ${this.dadosDaEntrega.numero}`);
+            console.log(` Complemento: ${this.dadosDaEntrega.complemento}`);
+            console.log(' Obrigado pela preferência');
+            console.log('---------------------------------');
         }
     }
 
