@@ -93,7 +93,7 @@ export class Perguntas {
     }
 
     public relatorio(){
-        console.log('---------------------------------');
+        console.log('--------------------------------');
         console.log(' Relatório do Pedido:\n');
         console.log(` Nome: ${this.dadosPedido.name}`);
         console.log(` Telefone: ${this.dadosPedido.tel}`);
@@ -102,12 +102,12 @@ export class Perguntas {
         console.log(` Quantidade: ${this.dadosPedido.quantidade}`);
 
         if (this.dadosDaEntrega === null) {
-            console.log('---------------------------------');
+            console.log('--------------------------------');
             console.log(' O cliente irá buscar a pizza');
             console.log(' Obrigado pela preferência');
-            console.log('---------------------------------');
+            console.log('--------------------------------');
         }else {
-            console.log('---------------------------------');
+            console.log('--------------------------------');
             console.log(' Relarório da Entrega\n');
             console.log(` Cidade: ${this.dadosDaEntrega.cidade}`);
             console.log(` Bairro: ${this.dadosDaEntrega.bairro}`);
@@ -115,7 +115,7 @@ export class Perguntas {
             console.log(` Número: ${this.dadosDaEntrega.numero}`);
             console.log(` Complemento: ${this.dadosDaEntrega.complemento}`);
             console.log(' Obrigado pela preferência');
-            console.log('---------------------------------');
+            console.log('--------------------------------');
         }
     }
 
