@@ -51,17 +51,48 @@ export class Perguntas {
                     } else {
                         this.relatorio();
                     }
-
-                    console.log(`\nOlá ${answers.name}!\n`);
                 }
         );
     }
     public entrega(){
-        
+        prompt(
+            [
+                {
+                    name: 'cidade',
+                    type: 'input',
+                    message: 'Digite sua cidade',
+                },
+                {
+                    name: 'bairro',
+                    type: 'input',
+                    message: 'Digite seu bairro',
+                },
+                {
+                    name: 'rua',
+                    type: 'input',
+                    message: 'Digite sua rua',
+                },
+                {
+                    name: 'numero',
+                    type: 'input',
+                    message: 'Digite seu número',
+                },
+                {
+                    name: 'complemento',
+                    type: 'input',
+                    message: 'Digite o complemento',
+                }
+            ]
+        ).then(
+            
+        );
     }
 
     public relatorio(){
-
+        console.log('uhul');
+        (answers : any) => {
+            console.log(`\nOlá ${answers.nome}!\n`);
+        }
     }
 
 }
