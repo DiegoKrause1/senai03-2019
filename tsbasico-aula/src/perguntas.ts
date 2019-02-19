@@ -1,9 +1,32 @@
 import {prompt} from 'inquirer';
+import {VpHttp} from './http/vphttp';
+
+interface ISabores {
+    descricao: string;
+    disponivel: string;
+}
+interface ITamanhos {
+    descricao: string;
+}
+interface ICidades {
+    descricao: string;
+}
+interface IBairros {
+    descricao: string;
+}
 
 export class Perguntas {
 
     private dadosDaEntrega : any = null;
     private dadosPedido : any = null; 
+    private sabores : Array<ISabores> = [];
+    private tamanhos : Array<ITamanhos> = [];
+    private cidades : Array<ICidades> = [];
+    private bairros : Array<IBairros> = [];
+
+    public delivery() {
+        this.getSabores();
+    }
 
     public infoPedido(){
         prompt(
@@ -22,13 +45,13 @@ export class Perguntas {
                     name: 'tam',
                     type: 'list',
                     message: 'Tamanho da pizza',
-                    choices: ['Pequena','Média','Grande'],
+                    choices: this.tamanhos.map(i => i.descricao),
                 },
                 {
                     name: 'sabor',
                     type: 'list',
                     message: 'Escolha um sabor',
-                    choices: ['Americana','Calabresa','Coração','Palmito','Camarão'],
+                    choices: this.sabores.map(i => i.descricao),
                 },
                 {
                     name: 'quantidade',
@@ -60,13 +83,15 @@ export class Perguntas {
             [
                 {
                     name: 'cidade',
-                    type: 'input',
-                    message: 'Digite sua cidade',
+                    type: 'list',
+                    message: 'Escolha sua cidade',
+                    choices: this.cidades.map(i => i.descricao),
                 },
                 {
                     name: 'bairro',
-                    type: 'input',
-                    message: 'Digite seu bairro',
+                    type: 'list',
+                    message: 'Escolha seu bairro',
+                    choices: this.bairros.map(i => i.descricao),
                 },
                 {
                     name: 'rua',
@@ -119,4 +144,51 @@ export class Perguntas {
         }
     }
 
+    public getSabores(){
+        new VpHttp('http://5c6b26f7e85ff400140854eb.mockapi.io/sabores').get().subscribe(
+            (data : any) => {
+                this.sabores = data;
+                this.getTamanhos();
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
+
+    public getTamanhos(){
+        new VpHttp('http://5c6b26f7e85ff400140854eb.mockapi.io/tamanhos').get().subscribe(
+            (data : any) => {
+                this.tamanhos = data;
+                this.getCidades();
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
+
+    public getCidades(){
+        new VpHttp('http://5c6b26f7e85ff400140854eb.mockapi.io/cidades').get().subscribe(
+            (data : any) => {
+                this.cidades = data;
+                this.getBairros();
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
+
+    public getBairros(){
+        new VpHttp('http://5c6b26f7e85ff400140854eb.mockapi.io/bairros').get().subscribe(
+            (data : any) => {
+                this.bairros = data;
+                this.infoPedido();
+            },
+            (error : any) => {
+                console.log(error);
+            }
+        );
+    }
 }
