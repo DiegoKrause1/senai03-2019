@@ -3,7 +3,7 @@ import {VpHttp} from './http/vphttp';
 
 interface ISabores {
     descricao: string;
-    disponivel: string;
+    disponivel: Boolean;
 }
 interface ITamanhos {
     descricao: string;
@@ -23,6 +23,7 @@ export class Perguntas {
     private tamanhos : Array<ITamanhos> = [];
     private cidades : Array<ICidades> = [];
     private bairros : Array<IBairros> = [];
+    private validaSabor : Array<ISabores> = [];
 
     public delivery() {
         this.getSabores();
@@ -147,7 +148,12 @@ export class Perguntas {
     public getSabores(){
         new VpHttp('http://5c6b26f7e85ff400140854eb.mockapi.io/sabores').get().subscribe(
             (data : any) => {
-                this.sabores = data;
+                this.validaSabor = data;
+                this.validaSabor.map(i =>{
+                    if(i.disponivel){
+                        this.sabores.push(i);
+                    }
+                });
                 this.getTamanhos();
             },
             (error : any) => {
