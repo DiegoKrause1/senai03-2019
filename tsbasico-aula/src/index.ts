@@ -1,3 +1,3 @@
-import {Perguntas} from './perguntas';
+import {prova} from './prova';
 
-new Perguntas().delivery();
+new prova().getCategoria();
