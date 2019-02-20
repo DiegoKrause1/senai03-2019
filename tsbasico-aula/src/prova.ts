@@ -7,6 +7,7 @@ interface ICategoria {
 interface IProdutos {
     descricao: string;
     produto: string;
+    saldo: string;
 }
 
 export class prova {
