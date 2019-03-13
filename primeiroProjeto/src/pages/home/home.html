@@ -9,8 +9,8 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label fixed>E-mail</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-label fixed>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Senha</ion-label>
@@ -19,6 +19,5 @@
   </ion-list>
   <div padding>
     <button ion-button color="secondary" (click)="login()">Login</button>
-    <button ion-button color="danger" (click)="logout()">Logout</button>
   </div>
 </ion-content>

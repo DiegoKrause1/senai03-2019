@@ -14,7 +14,7 @@ export class Toast {
     toast.present();
   }
 
-  public loadingShow(toastMessage : string = "Carregando"){
+  public loadingShow(toastMessage : string = "Login Falhou"){
     this.presentToast(toastMessage);
   }
 }

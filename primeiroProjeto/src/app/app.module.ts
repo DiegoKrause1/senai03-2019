@@ -10,12 +10,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Messages } from '../providers/messages';
 import { Toast } from '../providers/toast';
+import { SobrePage } from '../pages/sobre/sobre';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SobrePage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { Toast } from '../providers/toast';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SobrePage
   ],
   providers: [
     StatusBar,
