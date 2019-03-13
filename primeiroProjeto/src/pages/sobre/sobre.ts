@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,17 +8,16 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class SobrePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,) {
     let id = navParams.get('id');
     let name = navParams.get('name');
     console.log(id);
     console.log(name);
   }
 
-  ionViewWillEnter() {
-    this.viewCtrl.showBackButton(false);
-  }
   
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SobrePage');
   }
